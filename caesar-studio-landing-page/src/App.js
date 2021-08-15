@@ -25,8 +25,6 @@ function App() {
     
       const sheet = doc.sheetsByIndex[0];
     
-      console.log(data.name);
-      console.log(data.email);
       let row = {
         name: data.name,
         email: data.email
@@ -41,7 +39,6 @@ function App() {
     setData({
       ...data, [e.target.name] : e.target.value
     })
-    console.log(data.name);
   }
   return (
     <div className="App">
