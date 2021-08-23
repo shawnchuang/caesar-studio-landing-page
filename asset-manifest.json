@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/caesar-studio-landing-page/static/css/main.522f4fe4.chunk.css",
-    "main.js": "/caesar-studio-landing-page/static/js/main.3167a3ba.chunk.js",
-    "main.js.map": "/caesar-studio-landing-page/static/js/main.3167a3ba.chunk.js.map",
-    "runtime-main.js": "/caesar-studio-landing-page/static/js/runtime-main.520c725d.js",
-    "runtime-main.js.map": "/caesar-studio-landing-page/static/js/runtime-main.520c725d.js.map",
-    "static/js/2.7100589d.chunk.js": "/caesar-studio-landing-page/static/js/2.7100589d.chunk.js",
-    "static/js/2.7100589d.chunk.js.map": "/caesar-studio-landing-page/static/js/2.7100589d.chunk.js.map",
-    "static/js/3.d3c16d6f.chunk.js": "/caesar-studio-landing-page/static/js/3.d3c16d6f.chunk.js",
-    "static/js/3.d3c16d6f.chunk.js.map": "/caesar-studio-landing-page/static/js/3.d3c16d6f.chunk.js.map",
+    "main.css": "/caesar-studio-landing-page/static/css/main.4035d3ed.chunk.css",
+    "main.js": "/caesar-studio-landing-page/static/js/main.e9b75bea.chunk.js",
+    "main.js.map": "/caesar-studio-landing-page/static/js/main.e9b75bea.chunk.js.map",
+    "runtime-main.js": "/caesar-studio-landing-page/static/js/runtime-main.dffe7967.js",
+    "runtime-main.js.map": "/caesar-studio-landing-page/static/js/runtime-main.dffe7967.js.map",
+    "static/js/2.8b3fd2af.chunk.js": "/caesar-studio-landing-page/static/js/2.8b3fd2af.chunk.js",
+    "static/js/2.8b3fd2af.chunk.js.map": "/caesar-studio-landing-page/static/js/2.8b3fd2af.chunk.js.map",
+    "static/js/3.9fb0d430.chunk.js": "/caesar-studio-landing-page/static/js/3.9fb0d430.chunk.js",
+    "static/js/3.9fb0d430.chunk.js.map": "/caesar-studio-landing-page/static/js/3.9fb0d430.chunk.js.map",
     "index.html": "/caesar-studio-landing-page/index.html",
-    "static/css/main.522f4fe4.chunk.css.map": "/caesar-studio-landing-page/static/css/main.522f4fe4.chunk.css.map",
-    "static/js/2.7100589d.chunk.js.LICENSE.txt": "/caesar-studio-landing-page/static/js/2.7100589d.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/caesar-studio-landing-page/static/media/logo.6ce24c58.svg"
+    "static/css/main.4035d3ed.chunk.css.map": "/caesar-studio-landing-page/static/css/main.4035d3ed.chunk.css.map",
+    "static/js/2.8b3fd2af.chunk.js.LICENSE.txt": "/caesar-studio-landing-page/static/js/2.8b3fd2af.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.520c725d.js",
-    "static/js/2.7100589d.chunk.js",
-    "static/css/main.522f4fe4.chunk.css",
-    "static/js/main.3167a3ba.chunk.js"
+    "static/js/runtime-main.dffe7967.js",
+    "static/js/2.8b3fd2af.chunk.js",
+    "static/css/main.4035d3ed.chunk.css",
+    "static/js/main.e9b75bea.chunk.js"
   ]
 }
