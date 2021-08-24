@@ -19,6 +19,7 @@ function App() {
     businessItem: [],
     agreeToTest: false,
     disableForm: false,
+    validated: false,
   })
 
   let scrollToAnchor = (e, anchorName) => {
@@ -37,7 +38,18 @@ function App() {
   let submitInfo = async (e) => {
     try{
       e.preventDefault();
+      const form = e.currentTarget;
+      if(!form.checkValidity()){
+        setData({
+          ...data,
+          validated: true,
+        })
+
+        return;
+      }
+
       setData({
+        ...data,
         disableForm: true,
       })
   
@@ -67,16 +79,20 @@ function App() {
       await sheet.addRow(row);
       
       setData({
+        ...data,
         name:'',
         email:'',
         businessItem: [],
         agreeToTest: false,
         disableForm: false,
+        validated: false,
       })
       document.getElementById('beauty').checked = false;
       document.getElementById('manicure').checked = false;
       document.getElementById('hairdressing').checked = false;
       document.getElementById('agreeToTest').checked = false;
+
+      alert('感謝您的支持，我們會盡快與您聯繫!')
     }catch(e){
       console.error('Google sheet API Error', e);
     }
@@ -244,18 +260,24 @@ function App() {
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 formBorder">
                   <h2>歡迎聯繫我們</h2>
-                  <Form>
+                  <Form noValidate validated={data.validated} onSubmit={submitInfo}>
                   <fieldset disabled={data.disableForm}>
                     <Form.Group as={Row} className="mb-3" controlId="name">
                       <Form.Label column sm={3}>姓名</Form.Label>
                       <Col sm={9}>
-                        <Form.Control type="text" placeholder="請輸入姓名" name="name" value={data.name} onChange={handleChange}/>
+                        <Form.Control type="text" placeholder="請輸入姓名" name="name" value={data.name} onChange={handleChange} required/>
+                        <Form.Control.Feedback type="invalid">
+                          請輸入姓名
+                        </Form.Control.Feedback>
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="email">
                       <Form.Label column sm={3}>e-mail</Form.Label>
                       <Col sm={9}>
-                        <Form.Control type="text" placeholder="請輸入 e-mail" name="email" value={data.email} onChange={handleChange}/>
+                        <Form.Control type="text" placeholder="請輸入 e-mail" name="email" value={data.email} onChange={handleChange} required/>
+                        <Form.Control.Feedback type="invalid">
+                          請輸入 e-mail
+                        </Form.Control.Feedback>
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3">
@@ -270,7 +292,7 @@ function App() {
                     <Form.Group className="mb-3" controlId="agree">
                       <Form.Check type="checkbox" id="agreeToTest" label="我願意收到測試版試用" name="agreeToTest" value={data.agreeToTest} onClick={() => data.agreeToTest = !data.agreeToTest}/>
                     </Form.Group>
-                    <Button className="buttonRight" variant="primary" type="submit" onClick={submitInfo}>
+                    <Button className="buttonRight" variant="primary" type="submit">
                       送出
                     </Button>
                   </fieldset>
@@ -293,28 +315,6 @@ function App() {
         </div> {/* end of container */}
     </div> {/* end of footer */}  
     {/* end of footer */}
-
-  {/* <div className="App">
-      <header className="App-header">
-        <form>
-          <div>
-            <label>
-              姓名 : 
-            </label>
-            <input type='text' name='name' value={data.name} onChange={handleChange}/>
-          </div>
-          <div>
-            <label>
-              e-mail : 
-            </label>
-            <input type='text' name='email' value={data.email} onChange={handleChange}/>
-          </div>
-          <div>
-            <button onClick={submitInfo}>送出</button>
-          </div>
-        </form>
-      </header>
-    </div> */}
   </>
   );
 }
