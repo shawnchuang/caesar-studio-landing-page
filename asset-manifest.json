@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/caesar-studio-landing-page/static/css/main.8fb505dd.chunk.css",
-    "main.js": "/caesar-studio-landing-page/static/js/main.ae329773.chunk.js",
-    "main.js.map": "/caesar-studio-landing-page/static/js/main.ae329773.chunk.js.map",
+    "main.js": "/caesar-studio-landing-page/static/js/main.37c38fd1.chunk.js",
+    "main.js.map": "/caesar-studio-landing-page/static/js/main.37c38fd1.chunk.js.map",
     "runtime-main.js": "/caesar-studio-landing-page/static/js/runtime-main.dc6016a4.js",
     "runtime-main.js.map": "/caesar-studio-landing-page/static/js/runtime-main.dc6016a4.js.map",
     "static/js/2.06e4c11b.chunk.js": "/caesar-studio-landing-page/static/js/2.06e4c11b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.dc6016a4.js",
     "static/js/2.06e4c11b.chunk.js",
     "static/css/main.8fb505dd.chunk.css",
-    "static/js/main.ae329773.chunk.js"
+    "static/js/main.37c38fd1.chunk.js"
   ]
 }
