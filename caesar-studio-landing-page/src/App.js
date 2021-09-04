@@ -313,7 +313,7 @@ function App() {
     {/* end of features */}
 
     {/* <!-- Testimonials --> */}
-    <div class="slider-1 bg-gray" id="storeInfos" hidden={data.isLoading}>
+    <div class="slider-1" id="storeInfos" hidden={data.isLoading}>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
