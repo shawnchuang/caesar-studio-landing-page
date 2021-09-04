@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.storeInfoContent {
+  height: 200px;
+  width: 320px;
+}
+
+.storeInfoCard {
+  height: 400px !important;
+}
+
+.featureCard {
+  height: 300px !important;
+}
