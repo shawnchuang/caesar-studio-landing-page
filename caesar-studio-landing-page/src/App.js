@@ -25,7 +25,7 @@ function App() {
     /****************
      * 畫面顯示物件 *
      ****************/
-    isLoading: true,
+    isLoading: true,       // 顯示載入畫面
     pageTitle: '',         // 標題
     introContent: '',      // 介紹內容
     featureList: [],       // 功能特色清單
@@ -42,61 +42,66 @@ function App() {
   })
   // 畫面初始化
   let initPage =async() => {
-    // 1. 取得 gsheet 連結
-    let doc = new GoogleSpreadsheet(process.env.REACT_APP_GSHEET_ID);
-    await doc.useServiceAccountAuth({
-      client_email: process.env.REACT_APP_CLIENT_EMAIL,
-      private_key: process.env.REACT_APP_PRIVATE_KEY,
-    });
-    await doc.loadInfo();
-
-    // 2. 取得首頁資訊
-    let title;
-    let content;
-    const homePageSheet = doc.sheetsByIndex[1];
-    await homePageSheet.getRows().then((rows) => {
-      let homePageInfo = rows[0];
-      title = homePageInfo.title;
-      content = homePageInfo.content;
-    })
-    
-    // 3. 取得功能特色資訊
-    let featureList = [];
-    const featuresSheet = doc.sheetsByIndex[2];
-    await featuresSheet.getRows().then((rows) => {
-      rows.forEach(function(featuresRow){
-        let feature = {
-          title: featuresRow.title,
-          content: featuresRow.content,
-          image: featuresRow.image
-        }
-        featureList.push(feature);
+    try{
+      // 1. 取得 gsheet 連結
+      let doc = new GoogleSpreadsheet(process.env.REACT_APP_GSHEET_ID);
+      await doc.useServiceAccountAuth({
+        client_email: process.env.REACT_APP_CLIENT_EMAIL,
+        private_key: process.env.REACT_APP_PRIVATE_KEY,
+      });
+      await doc.loadInfo();
+  
+      // 2. 取得首頁資訊
+      let title;
+      let content;
+      const homePageSheet = doc.sheetsByIndex[1];
+      await homePageSheet.getRows().then((rows) => {
+        let homePageInfo = rows[0];
+        title = homePageInfo.title;
+        content = homePageInfo.content;
       })
-    })
-
-    // 4. 取得商家資訊
-    let storeInfoList = [];
-    const storeInfoSheet = doc.sheetsByIndex[3];
-    await storeInfoSheet.getRows().then((rows) => {
-      rows.forEach(function(storeInfoRow){
-        let storeInfo = {
-          image: storeInfoRow.image,
-          name: storeInfoRow.name,
-          content: storeInfoRow.content,
-          url: storeInfoRow.url
-        }
-        storeInfoList.push(storeInfo);
+      
+      // 3. 取得功能特色資訊
+      let featureList = [];
+      const featuresSheet = doc.sheetsByIndex[2];
+      await featuresSheet.getRows().then((rows) => {
+        rows.forEach(function(featuresRow){
+          let feature = {
+            title: featuresRow.title,
+            content: featuresRow.content,
+            image: featuresRow.image
+          }
+          featureList.push(feature);
+        })
       })
-    })
-
-    setData({
-      ...data, 
-      featureList : featureList,
-      storeInfoList : storeInfoList,
-      pageTitle : title,
-      introContent : content,
-      isLoading: false
-    })
+  
+      // 4. 取得商家資訊
+      let storeInfoList = [];
+      const storeInfoSheet = doc.sheetsByIndex[3];
+      await storeInfoSheet.getRows().then((rows) => {
+        rows.forEach(function(storeInfoRow){
+          let storeInfo = {
+            image: storeInfoRow.image,
+            name: storeInfoRow.name,
+            content: storeInfoRow.content,
+            url: storeInfoRow.url
+          }
+          storeInfoList.push(storeInfo);
+        })
+      })
+  
+      // 5. 渲染畫面
+      setData({
+        ...data, 
+        featureList : featureList,
+        storeInfoList : storeInfoList,
+        pageTitle : title,
+        introContent : content,
+        isLoading: false
+      })
+    }catch(error){
+      console.error("init page error", error);
+    }
   }
   // 畫面滾動工具
   let scrollToAnchor = (e, anchorName) => {
@@ -209,7 +214,7 @@ function App() {
         text: '我們會盡快與您聯繫!',
       })
     }catch(error){
-      console.error('Google sheet API Error', error);
+      console.error('submit form error', error);
     }
   };
 
@@ -341,11 +346,12 @@ function App() {
                                 <div class="card">
                                   <img class="card-image" src={storeInfo.image} alt="alternative"/>
                                   <div class="card-body storeInfoContent">
-                                    <p class="testimonial-author">{storeInfo.name}</p>
+                                    <p>
+                                      <a class="testimonial-author" href={storeInfo.url} target="_blank">
+                                        {storeInfo.name}
+                                      </a>
+                                    </p>
                                     <p>{storeInfo.content}</p>
-                                  </div>
-                                  <div class="button-wrapper">
-                                      <a class="btn-solid-lg secondary" href={storeInfo.url} target="_blank">來去看看</a>
                                   </div>
                                 </div>
                               </SwiperSlide>
